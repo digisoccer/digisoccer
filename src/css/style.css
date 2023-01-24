@@ -55,7 +55,105 @@ nav a:hover{
     display: none;
 }
 
-@media screen and (max-width:600px) {
+.isactive{
+    color: rgb(0, 136, 255);
+}
+
+h1{
+    color: #fff;
+    text-align: center;
+}
+
+.form{
+    width: 500px;
+    padding: 20px;
+    position:relative;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+input, textarea{
+    width: 450px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #fff;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+}
+
+textarea{
+    width: 450px;
+    resize: none;
+}
+
+.header-form{
+    color: #fff;
+}
+
+input:focus{
+    outline: none;
+    border: 3px solid rgb(0, 136, 255);
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+textarea:focus{
+    outline: none;
+    border: 3px solid rgb(0, 136, 255);
+}
+
+textarea:focus::placeholder{
+    color: transparent;
+}
+
+.btn-form{
+    background-color: rgb(0, 136, 255); /* Green */
+    box-sizing: border-box;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 12px 210px;
+    display: inline-block;
+}
+
+.btn-form:hover{
+    background-color: rgb(0, 106, 199);
+    cursor: pointer;
+}
+
+.footer{
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 10px;
+}
+
+p{
+    color: #fff;
+}
+
+.footer-text{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 15px;
+}
+
+.footer-line{
+    opacity: 50%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media screen and (max-width:600px){
     nav{
         display: block;
         position: relative;
@@ -75,42 +173,43 @@ nav a:hover{
         top: 20px;
         right: 20px;
     }
+
+    .form{
+        width: 100%;
+    }
+
+    input, textarea{
+        width: 300px;
+    }
+
+    .btn-form{
+        padding: 12px 110px;
+    }
+
+    .footer-text{
+        font-size: 10px;
+    }
 }
 
-.isactive{
-    color: rgb(0, 136, 255);
+@media screen and (max-width:350px){
+    .form{
+        width: 100%;
+    }
+
+    input, textarea{
+        width: 200px;
+    }
+
+    .btn-form{
+        padding: 12px 80px;
+    }
+
+    .footer-text{
+        font-size: 8px;
+    }
 }
 
-h1{
+::selection{
     color: #fff;
-    text-align: center;
-}
-
-.form{
-    width: 200px;
-    padding: 20px;
-    position:relative;
-    text-align: center;
-    margin: auto;
-    display: block;
-}
-
-input, textarea{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-    border-radius: 20px;
-    border-style: solid;
-    border-color: #fff;
-    text-align: center;
-    font-family: "Poppins", sans-serif;
-}
-
-textarea{
-    width: 100%;
-}
-
-.header-form{
-    color: #fff;
+    background-color: #161b22;
 }
