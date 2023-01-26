@@ -68,43 +68,48 @@
     </script>
     <script>
         function createCard(){
+            var container = document.createElement("div");
+            container.classList.add("container");
+            document.body.appendChild(container);
+
             var card = document.createElement("div");
             card.classList.add("card");
-            document.getElementsByClassName("container").appendChild(card);
+            container.appendChild(card);
 
-            var card_image = document.createElement("div");
-            card_image.classList.add("card-image");
-            document.getElementsByClassName("card").appedChild(card_image);
-            var image = document.createElement("img");
-            image.classList.add("plr-card-img");
-            image.src = "/src/images/cards/uilton.png";
-            image.alt = "uilton.png";
-            document.getElementsByClassName("card-image").appedChild(image);
+            var cardImage = document.createElement("div");
+            cardImage.classList.add("card-image");
+            card.appendChild(cardImage);
 
-            var card = document.createElement("div");
-            card.classList.add("card-text");
-            document.getElementsByClassName("card").appendChild(card);
-            var card_main_txt = document.createElement("h2");
-            card_main_txt.classList.add("card-main-text");
-            const main_text = document.createTextNode("Uilton Silva");
-            card_main_txt.appendChild(main_text);
-            document.getElementsByClassName("card-text").appendChild(card_main_txt);
-            var card_desc_txt = document.createElement("p");
-            card_desc_txt.classList.add("card-desc");
-            const desc_txt = document.createTextNode(">Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado</p>");
-            card_desc_txt.appendChild(desc_text);
-            document.getElementsByClassName("card-text").appendChild(card_desc_txt);
+            var img = document.createElement("img");
+            img.classList.add("plr-card-img");
+            img.src = "/src/images/cards/uilton.png";
+            img.alt = "uilton.png";
+            cardImage.appendChild(img);
 
-            var card = document.createElement("div");
-            card.classList.add("card-btn-cont");
-            document.getElementsByClassName("card").appendChild(card)
-            var card_btn = document.createElement("button");
-            card_btn.classList.add("card-btn-cont");
-            card_btn.type = "button";
-            card_btn.onclick = "createCard()"
-            const btn_txt = document.createTextNode("Imagens");
-            card_btn.appendChild(btn_text);
-            document.getElementsByClassName("card").appendChild(card_btn)
+            var cardText = document.createElement("div");
+            cardText.classList.add("card-text");
+            card.appendChild(cardText);
+
+            var h2 = document.createElement("h2");
+            h2.classList.add("card-main-txt");
+            h2.textContent = "UILTON SILVA";
+            cardText.appendChild(h2);
+
+            var p = document.createElement("p");
+            p.classList.add("card-desc");
+            p.innerHTML = "Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado";
+            cardText.appendChild(p);
+
+            var cardBtnCont = document.createElement("div");
+            cardBtnCont.classList.add("card-btn-cont");
+            card.appendChild(cardBtnCont);
+
+            var btn = document.createElement("button");
+            btn.type = "button";
+            btn.classList.add("card-btn");
+            btn.textContent = "Imagens";
+            btn.onclick = function() {createCard()};
+            cardBtnCont.appendChild(btn);
         }
     </script>
 </body>
