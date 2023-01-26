@@ -41,11 +41,18 @@
                 <p class="card-desc">Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado</p>
             </div>
             <div class="card-btn-cont">
-                <button type="button" class="card-btn" onclick="createCard()">Imagens</button>    
+                <button type="button" class="card-btn">Imagens</button>    
             </div>
         </div>
     </div>
     
+    <a class="fixedButton">
+        <div class="roundedFixedBtn">
+            <button type="button" class="roundedFixedBtn" onclick="createCard()">
+                <iconify-icon icon="material-symbols:add-circle" style="color: white;"></iconify-icon>
+            </button>
+        </div>
+    </a>
 
     <div class="footer">
         <hr class="footer-line">
@@ -68,9 +75,7 @@
     </script>
     <script>
         function createCard(){
-            var container = document.createElement("div");
-            container.classList.add("container");
-            document.body.appendChild(container);
+            var container = document.querySelector(".container");
 
             var card = document.createElement("div");
             card.classList.add("card");
@@ -92,12 +97,21 @@
 
             var h2 = document.createElement("h2");
             h2.classList.add("card-main-txt");
-            h2.textContent = "UILTON SILVA";
+            var text = window.prompt("Nome do Jogador");
+            h2.textContent = text;
             cardText.appendChild(h2);
 
             var p = document.createElement("p");
             p.classList.add("card-desc");
-            p.innerHTML = "Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado";
+            var clube = window.prompt("Clube do Jogador");
+            var idade = window.prompt("Idade do Jogador");
+            var altura = window.prompt("Altura do Jogador");
+            var posicao = window.prompt("Posição do Jogador");
+            p.textContent = clube;
+            p.textContent = idade;
+            p.textContent = altura;
+            p.textContent = posicao;
+            p.innerHTML = "Clube: " + clube + "<br>Idade: " + idade + " Anos<br>Altura: " + altura + " cm<br>Posição: " + posicao;
             cardText.appendChild(p);
 
             var cardBtnCont = document.createElement("div");
@@ -108,7 +122,6 @@
             btn.type = "button";
             btn.classList.add("card-btn");
             btn.textContent = "Imagens";
-            btn.onclick = function() {createCard()};
             cardBtnCont.appendChild(btn);
         }
     </script>

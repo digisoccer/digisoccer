@@ -405,3 +405,17 @@ p{
     color: #000000;
     background-color: #fff;
 }
+
+.fixedButton{
+    position: fixed;
+    bottom:0px;
+    right: 40px; 
+}
+.roundedFixedBtn{
+    font-size: 70px;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
