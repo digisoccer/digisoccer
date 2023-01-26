@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyCkKPisZG0Gy2SxateuJ_lHwFrGqnySGGI",
+          authDomain: "digisoccer-f96eb.firebaseapp.com",
+          projectId: "digisoccer-f96eb",
+          storageBucket: "digisoccer-f96eb.appspot.com",
+          messagingSenderId: "160737361662",
+          appId: "1:160737361662:web:092e2d1844996151fb6faf",
+          measurementId: "G-GXG7Z0Q867"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</head>
+<body>
+    <form onsubmit="createUser()">
+        <label>
+          Email:
+          <input type="email" id="email-input" />
+        </label>
+        <br />
+        <label>
+          Password:
+          <input type="password" id="password-input" />
+        </label>
+        <br />
+        <button type="submit">Create User
+<script>
+    function createUser(){
+        var email = document.getElementById("email-input").value;
+  var password = document.getElementById("password-input").value;
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then(function(user) {
+    // user was successfully created
+    console.log("User created:", user);
+  })
+  .catch(function(error) {
+    // an error occurred
+    console.error("Error creating user:", error);
+  });
+
+    }
+</script>      
+</body>
+</html>

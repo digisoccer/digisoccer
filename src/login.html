@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <html>
+        <head>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+          <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-auth.js"></script>
+          <script>
+            var firebaseConfig = {
+            apiKey: "AIzaSyCkKPisZG0Gy2SxateuJ_lHwFrGqnySGGI",
+            authDomain: "digisoccer-f96eb.firebaseapp.com",
+            projectId: "digisoccer-f96eb",
+            storageBucket: "digisoccer-f96eb.appspot.com",
+            messagingSenderId: "160737361662",
+            appId: "1:160737361662:web:092e2d1844996151fb6faf",
+            measurementId: "G-GXG7Z0Q867"
+        };
+        firebase.initializeApp(firebaseConfig);
+        var auth = firebase.auth();
+          </script>
+        </head>
+        <body>
+          <div id="login-form" class="form">
+            <h1>Login</h1>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()" class="btn-form">Log In</button>
+            <label for="keep-signed-in" style="color: #fff;">Manter Login</label>
+            <input type="checkbox" id="keep-signed-in">
+            <a class="back-to-index" href="/src/index.html">Voltar ao início</a>
+          </div>
+          <div id="logged-in-content" class="form" style="display:none;">
+            <button onclick="signOut()" class="btn-form">Sair da Conta</button>
+            <div id="specific-button" style="display:none;">
+              <button onclick="addParag()">Add Parag</button>
+            </div>
+          </div>
+          <script>
+            function login() {
+  var email = document.getElementById("email").value;
+  var password = document.getElementById("password").value;
+  var keepSignedIn = document.getElementById("keep-signed-in").checked;
+  var auth = firebase.auth();
+  var promise = auth.signInWithEmailAndPassword(email, password);
+  promise.catch(e => alert(e.message));
+  promise.then(function() {
+    if (keepSignedIn) {
+      auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(function() {
+          // User is now signed in across all pages
+          window.location.href = "index.html";
+      })
+      .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+      });
+    }
+    checkIfSpecificUser();
+    document.getElementById("login-form").style.display = "none";
+    document.getElementById("logged-in-content").style.display = "block";
+  });
+}
+
+            
+            function checkIfSpecificUser() {
+              var user = firebase.auth().currentUser;
+              if (user.email === "specific_user@example.com") {
+                document.getElementById("specific-button").style.display = "block";
+              }
+            }
+            
+            function signOut() {
+              firebase.auth().signOut();
+              document.getElementById("logged-in-content").style.display = "none";
+              document.getElementById("login-form").style.display         = "block";
+      }
+      
+      function addParag() {
+        // Code to add a new paragraph
+      }
+      
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          document.getElementById("logged-in-content").style.display = "block";
+          document.getElementById("login-form").style.display = "none";
+          checkIfSpecificUser();
+        } else {
+          document.getElementById("logged-in-content").style.display = "none";
+          document.getElementById("login-form").style.display = "block";
+        }
+      });
+    </script>
+  </body>
+</html>
+
+      

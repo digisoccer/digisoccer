@@ -30,12 +30,12 @@ function SendMail() {
         user_message : document.getElementById("message_id").value,
     }
     emailjs.send("service_mr1qt27", "template_40dtk22", params).then(function (res){
-        location.reload();
         document.getElementById("success-img").style.display = "block";
-        setTimeout(hideImage, 5000);
+        setTimeout(hideImage, 2500);
     })
 }
 
 function hideImage() {
     document.getElementById("success-img").style.display = "none";
+    location.reload();
 }
