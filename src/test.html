@@ -1,29 +1,31 @@
-// Initialize Firebase
-firebase.initializeApp({
-    apiKey: "your-api-key",
-    authDomain: "your-auth-domain",
-    projectId: "your-project-id",
-});
-
-// Check if the user is logged in
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        // User is signed in.
-        document.getElementById("login").style.display = "none";
-        document.getElementById("admin").style.display = "block";
-
-        // Check if the user is an admin
-        firebase.firestore().collection("admins").doc(user.uid).get().then(function(doc) {
-            if (doc.exists) {
-                document.getElementById("admin-button").style.display = "block";
-            }
-        }).catch(function(error) {
-            console.log("Error getting admin data: ", error);
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML File Update</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Old Title</h1>
+    <button id="update-button">Update File</button>
+    <script>
+        $('#update-button').click(function() {
+            // Send a GET request to the server to retrieve the current HTML content
+            $.get('/src/test.html', function(data) {
+                // Update the contents of the file
+                var newContent = '<h1>New Title</h1>';
+                data = data.replace('<h1>Old Title</h1>', newContent);
+                
+                // Send a POST request to the server to save the changes
+                $.ajax({
+                    type: 'POST',
+                    url: '/src/save-file.php',
+                    data: { htmlContent: data },
+                    success: function(response) {
+                        console.log('File successfully updated');
+                    }
+                });
+            });
         });
-    } else {
-        // No user is signed in.
-        document.getElementById("login").style.display = "block";
-        document.getElementById("admin").document.getElementById("admin").style.display = "none";
-        document.getElementById("admin-button").style.display = "none";
-    }
-});
+    </script>
+</body>
+</html>

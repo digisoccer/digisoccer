@@ -8,6 +8,36 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
+    <script>// Initialize Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyCkKPisZG0Gy2SxateuJ_lHwFrGqnySGGI",
+            authDomain: "digisoccer-f96eb.firebaseapp.com",
+            projectId: "digisoccer-f96eb",
+            storageBucket: "digisoccer-f96eb.appspot.com",
+            messagingSenderId: "160737361662",
+            appId: "1:160737361662:web:092e2d1844996151fb6faf",
+            measurementId: "G-GXG7Z0Q867"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        var auth = firebase.auth();
+
+        // Check if the user is logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+                document.getElementById("login").textContent = "admin";
+                document.getElementById("admin-button").style.display = "block";
+                
+            } else {
+                // No user is signed in.
+                document.getElementById("login").textContent = "Login";
+                document.getElementById("admin-button").style.display = "none";
+            }
+        });
+    </script>
     <title>Digisoccer - Portfólio</title>
 </head>
 <body>
@@ -24,9 +54,8 @@
                 <li><a href="/src/portfolio.html" class="isactive">Portfólio</a></li>
                 <li><a href="/src/sobre.html">Sobre Nós</a></li>
                 <li><a href="/src/contactos.html">Contactos</a></li>
-                <p> | </p>
-                <li><a id="sign-in" href="/src/login.html"><iconify-icon class="login-icon" icon="material-symbols:login-rounded"></iconify-icon></a></li>
-                <li><a id="sign-out" href="#"><iconify-icon class="login-icon" icon="material-symbols:logout"></iconify-icon></a></li>
+                <li><p> | </p></li>
+                <li><a id="login" href="/src/login.html">Login</a></li>
             </ul>
         </nav>
     </div>
@@ -37,8 +66,8 @@
                 <img class="plr-card-img" src="/src/images/cards/uilton.png" alt="uilton.png">    
             </div>
             <div class="card-text">
-                <h2 class="card-main-txt">UILTON SILVA</h2>
-                <p class="card-desc">Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado</p>
+                <h2 class="card-main-txt">Uilton Silva</h2>
+                <p class="card-desc"><strong>Clube:</strong> Paços de Ferreira<br><strong>Idade:</strong> 29 Anos<br><strong>Altura:</strong> 170 cm<br><strong>Posição:</strong> Avançado</p>
             </div>
             <div class="card-btn-cont">
                 <button type="button" class="card-btn">Imagens</button>    
@@ -46,10 +75,10 @@
         </div>
     </div>
     
-    <a class="fixedButton">
-        <div class="roundedFixedBtn">
-            <button type="button" class="roundedFixedBtn" onclick="createCard()">
-                <iconify-icon icon="material-symbols:add-circle" style="color: white;"></iconify-icon>
+    <a class="fixedButton" id="admin-button">
+        <div class="roundedFixedBtn" id="admin-button">
+            <button id="admin-button" type="button" class="roundedFixedBtn" onclick="createCard()">
+                <iconify-icon id="admin-button" icon="material-symbols:add-circle" style="color: white;"></iconify-icon>
             </button>
         </div>
     </a>
@@ -111,7 +140,7 @@
             p.textContent = idade;
             p.textContent = altura;
             p.textContent = posicao;
-            p.innerHTML = "Clube: " + clube + "<br>Idade: " + idade + " Anos<br>Altura: " + altura + " cm<br>Posição: " + posicao;
+            p.innerHTML = "<strong>Clube:</strong> " + clube + "<br><strong>Idade:</strong> " + idade + " Anos<br><strong>Altura:</strong> " + altura + " cm<br><strong>Posição:</strong> " + posicao;
             cardText.appendChild(p);
 
             var cardBtnCont = document.createElement("div");
