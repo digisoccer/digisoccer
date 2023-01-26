@@ -4,13 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: ease all .5s;
 }
 
 body{
     font-family: "Poppins", sans-serif;
     background-color: #0d1117;
     min-width: 300px;
+    transition: ease all .5s;
 }
 
 a, a:hover{
