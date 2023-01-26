@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="/src/images/ico/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
     <title>Digisoccer - Portfólio</title>
 </head>
 <body>
@@ -23,10 +24,28 @@
                 <li><a href="/src/portfolio.html" class="isactive">Portfólio</a></li>
                 <li><a href="/src/sobre.html">Sobre Nós</a></li>
                 <li><a href="/src/contactos.html">Contactos</a></li>
+                <p> | </p>
+                <li><a id="sign-in" href="/src/login.html"><iconify-icon class="login-icon" icon="material-symbols:login-rounded"></iconify-icon></a></li>
+                <li><a id="sign-out" href="#"><iconify-icon class="login-icon" icon="material-symbols:logout"></iconify-icon></a></li>
             </ul>
         </nav>
     </div>
-    <h1>Hello World!</h1>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-image">
+                <img class="plr-card-img" src="/src/images/cards/uilton.png" alt="uilton.png">    
+            </div>
+            <div class="card-text">
+                <h2 class="card-main-txt">UILTON SILVA</h2>
+                <p class="card-desc">Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado</p>
+            </div>
+            <div class="card-btn-cont">
+                <button type="button" class="card-btn" onclick="createCard()">Imagens</button>    
+            </div>
+        </div>
+    </div>
+    
 
     <div class="footer">
         <hr class="footer-line">
@@ -46,6 +65,47 @@
                 }
             });
         });
+    </script>
+    <script>
+        function createCard(){
+            var card = document.createElement("div");
+            card.classList.add("card");
+            document.getElementsByClassName("container").appendChild(card);
+
+            var card_image = document.createElement("div");
+            card_image.classList.add("card-image");
+            document.getElementsByClassName("card").appedChild(card_image);
+            var image = document.createElement("img");
+            image.classList.add("plr-card-img");
+            image.src = "/src/images/cards/uilton.png";
+            image.alt = "uilton.png";
+            document.getElementsByClassName("card-image").appedChild(image);
+
+            var card = document.createElement("div");
+            card.classList.add("card-text");
+            document.getElementsByClassName("card").appendChild(card);
+            var card_main_txt = document.createElement("h2");
+            card_main_txt.classList.add("card-main-text");
+            const main_text = document.createTextNode("Uilton Silva");
+            card_main_txt.appendChild(main_text);
+            document.getElementsByClassName("card-text").appendChild(card_main_txt);
+            var card_desc_txt = document.createElement("p");
+            card_desc_txt.classList.add("card-desc");
+            const desc_txt = document.createTextNode(">Clube: Paços de Ferreira<br>Idade: 29 Anos<br>Altura: 170cm<br>Posição: Avançado</p>");
+            card_desc_txt.appendChild(desc_text);
+            document.getElementsByClassName("card-text").appendChild(card_desc_txt);
+
+            var card = document.createElement("div");
+            card.classList.add("card-btn-cont");
+            document.getElementsByClassName("card").appendChild(card)
+            var card_btn = document.createElement("button");
+            card_btn.classList.add("card-btn-cont");
+            card_btn.type = "button";
+            card_btn.onclick = "createCard()"
+            const btn_txt = document.createTextNode("Imagens");
+            card_btn.appendChild(btn_text);
+            document.getElementsByClassName("card").appendChild(card_btn)
+        }
     </script>
 </body>
 </html>

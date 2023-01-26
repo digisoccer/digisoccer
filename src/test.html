@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+   <h2>JavaScript HTML DOM</h2>
+   <p>How to add a new element to HTML DOM</p>
+   <div id="div1">
+      <p id="p1">Introduction.</p>
+      <p id="p2">Conclusion.</p>
+   </div>
+   <script>
+      const para = document.createElement("p");
+      const node = document.createTextNode("The end.");
+      para.appendChild(node);
+      const element = document.getElementById("div1");
+      const child = document.getElementById("p2");
+      element.appendChild(para,child);
+   </script>
+</body>
+</html>

@@ -31,7 +31,9 @@ function SendMail() {
     }
     emailjs.send("service_mr1qt27", "template_40dtk22", params).then(function (res){
         document.getElementById("success-img").style.display = "block";
-        setTimeout(hideImage, 2500);
+        document.body.style.backgroundColor = "#000000";
+        document.body.style.opacity = "50%"
+        setTimeout(hideImage, 3000);
     })
 }
 
