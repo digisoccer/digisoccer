@@ -18,7 +18,7 @@ function Validate(){
             alert("Formato de email inválido!");
             return false;
         }
-        SendMail();
+        Success()
     }
 }
 
@@ -30,14 +30,25 @@ function SendMail() {
         user_message : document.getElementById("message_id").value,
     }
     emailjs.send("service_mr1qt27", "template_40dtk22", params).then(function (res){
-        document.getElementById("success-img").style.display = "block";
-        document.body.style.backgroundColor = "#000000";
-        document.body.style.opacity = "50%"
-        setTimeout(hideImage, 3000);
+        Success();
     })
 }
 
-function hideImage() {
-    document.getElementById("success-img").style.display = "none";
-    location.reload();
+function Success() {
+    Swal.fire({
+        icon: 'success',
+        title: 'Mensagem Enviada Com Sucesso!',
+        color: '#fff',
+        text: 'Obrigado pelo seu contacto, informamos que a sua mensagem foi entregue com sucesso, irá receber um e-mail de resposta da nossa equipa!',
+        type: 'success',
+        confirmButtonColor : 'rgb(0, 136, 255)',
+        confirmButtonText : 'TESTE',
+        color: '#fff',
+        background: '#161b22',
+        titleColor: '#fff'
+    }).then((result) => {
+        // Reload the Page
+        location.reload();
+      });
+      
 }
