@@ -37,15 +37,13 @@ function SendMail() {
 function Success() {
     Swal.fire({
         icon: 'success',
-        title: 'Mensagem Enviada Com Sucesso!',
-        color: '#fff',
+        title: "<h5 style='color:#fff'>Mensagem Enviada com Sucesso!</h5>",
         text: 'Obrigado pelo seu contacto, informamos que a sua mensagem foi entregue com sucesso, irá receber um e-mail de resposta da nossa equipa!',
         type: 'success',
         confirmButtonColor : 'rgb(0, 136, 255)',
-        confirmButtonText : 'TESTE',
+        confirmButtonText : 'Ok',
         color: '#fff',
-        background: '#161b22',
-        titleColor: '#fff'
+        background: '#161b22'
     }).then((result) => {
         // Reload the Page
         location.reload();
