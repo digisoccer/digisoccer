@@ -45,7 +45,6 @@ function Success() {
         color: '#fff',
         background: '#161b22'
     }).then((result) => {
-        // Reload the Page
         location.reload();
       });
       

@@ -419,3 +419,33 @@ p{
     text-align: center;
     cursor: pointer;
 }
+.name-index{
+    color: rgb(0, 136, 255);
+}
+.header-index{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.intro-video{
+    padding-top: 10px;
+    text-align: center;
+}
+.intro-video-frame{
+    width: 100%;
+}
+.header-about{
+    padding-top: 30px;
+}
+.text-area-about{
+    padding-top: 30px;
+    width: 80%;
+    margin-left: 175px;
+    text-align: center;
+}
+.text-area-about-us{
+    text-align: center;
+    font-size: 20px;
+}
+.text-area-about-us:hover{
+    color: rgb(0, 136, 255);
+}

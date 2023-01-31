@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/x-icon" href="/src/images/ico/favicon.ico">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="/src/js/slider.js"></script>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.22.1/firebase-auth.js"></script>
-        <script>// Initialize Firebase
+        <script>
             var firebaseConfig = {
                 apiKey: "AIzaSyCkKPisZG0Gy2SxateuJ_lHwFrGqnySGGI",
                 authDomain: "digisoccer-f96eb.firebaseapp.com",
@@ -24,13 +25,10 @@
             firebase.initializeApp(firebaseConfig);
             var auth = firebase.auth();
 
-            // Check if the user is logged in
             firebase.auth().onAuthStateChanged(function(user) {
                 if (user) {
-                    // User is signed in.
                     document.getElementById("login").textContent = "admin";
 
-                    // Check if the user is an admin
                     firebase.firestore().collection("admins").doc(user.uid).get().then(function(doc) {
                         if (doc.exists) {
                             document.getElementById("admin-button").style.display = "block";
@@ -39,7 +37,6 @@
                         console.log("Error getting admin data: ", error);
                     });
                 } else {
-                    // No user is signed in.
                     document.getElementById("login").textContent = "Login";
                     document.getElementById("admin-button").style.display = "none";
                 }
@@ -66,17 +63,21 @@
                 </ul>
             </nav>
         </div>
-        <h1>Hello World!</h1>
-
-    </div>
-    <iframe width="1280" height="720" src="https://www.youtube.com/embed/rJjwblDUxKM" title="Slow J | Unplugged" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-        <p contenteditable="true">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta inventore quae magnam, nemo voluptas voluptatum deserunt adipisci mollitia ullam optio deleniti ex possimus error laudantium, fugit vero? Consequuntur, ipsam fugiat.</p>
-        <div class="footer">
-            <hr class="footer-line">
-            <p class="footer-text">Copyright ©2023 Digisoccer. All rights reserved.</p>
+        
+        <div class="header-index">
+            <h1>Bem-Vindo ao Website da Digi<span class="name-index">soccer</span>!</h1>
         </div>
 
+        <div class="intro-video">
+            <iframe class="intro-video-frame" src="https://player.vimeo.com/video/705349106?h=b852596cd6" width="640" height="360" frameborder="0" allow="autoplay; fullscreen;" allowfullscreen></iframe>
+        </div>
+        
+        </div>
+            <div class="footer">
+                <hr class="footer-line">
+                <p class="footer-text">Copyright ©2023 Digisoccer. All rights reserved.</p>
+        </div>
+        
         <script>
             $(function(){
                 $(".toggle").on("click", function(){
